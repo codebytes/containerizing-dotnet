@@ -1,97 +1,58 @@
 ---
 marp: true
 theme: custom-default
-footer: 'https://example.com'
+footer: 'https://chris-ayers.com'
 ---
 
-# My Presentation
-![bg right](https://picsum.photos/800/600)
-
----
-
-<!-- Speaker Notes -->
-## Slide 1
-
-- Item 1
-- Item 2
-- Item 3
-<!-- Can have multiple on a slide -->
+# <!--fit-->Containerizing<br/>.NET Applications
+## Chris Ayers
+![bg right:50%](./img/dotnet-logo.png)
 
 ---
 
-## Slide 2
-<!-- Can also do a multiline
-comment that will show in notes -->
+![bg left:40%](./img/portrait.png)
 
-![Image](https://picsum.photos/800/600)
+# Chris Ayers
+## Senior Customer Engineer<br>Microsoft
 
----
-
-## Slide 3
-
-> This is a quote.
-
----
-
-## Slide 4
-
-| Column 1 | Column 2 |
-| -------- | -------- |
-| Item 1   | Item 2   |
-| Item 3   | Item 4   |
+<i class="fa-brands fa-twitter"></i> Twitter : @Chris\_L\_Ayers
+<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-linkedin"></i> LinkedIn: [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
+<i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
+<i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
 
 ---
 
-![bg opacity](https://picsum.photos/800/600?image=53)
-## Slide 5
+# Agenda
+
+---
+
+# Questions?
+
+![bg right](img/owl.png)
+
+---
 
 <div class="columns">
 <div>
 
-## Left
+## Resources
 
-- 1
-- 2
+#### GitHub Repo
+[**https://github.com/codebytes/containerizing-dotnet**](https://github.com/codebytes/containerizing-dotnet)
+
 
 </div>
+
 <div>
 
-## Right
+## Contact
 
-- 3
-- 4
+<i class="fa-brands fa-twitter"></i> Twitter: @Chris\_L\_Ayers
+<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
+<i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
+<i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
 
 </div>
-</div>
-
----
-
-## Slide 6
-
-<i class="fa-brands fa-twitter"></i> Twitter: 
-<i class="fa-brands fa-mastodon"></i> Mastodon: 
-<i class="fa-brands fa-linkedin"></i> LinkedIn: 
-<i class="fa fa-window-maximize"></i> Blog: 
-<i class="fa-brands fa-github"></i> GitHub: 
-
----
-
-# <!--fit--> Large Text
-
----
-
-<!-- Needed for mermaid, can be anywhere in file except frontmatter -->
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-# Mermaid
-
-<div class="mermaid">
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
 </div>
