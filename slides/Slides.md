@@ -27,6 +27,16 @@ footer: 'https://chris-ayers.com'
 
 ---
 
+# Other Tools
+
+- https://github.com/lippertmarkus/konet
+- https://github.com/dotnet/docker-tools
+- https://github.com/tmds/build-image
+- https://github.com/dotnet/sdk-container-builds
+- https://github.com/dotnet/dotnet-docker
+
+---
+
 # Questions?
 
 ![bg right](img/owl.png)
