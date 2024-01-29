@@ -25,6 +25,76 @@ footer: 'https://chris-ayers.com'
 
 # Agenda
 
+1. Introduction to Containerization
+2. Microservices and Cloud-Native Applications
+3. Deep Dive into .NET and Containers
+4. Security in Containerized .NET Apps
+5. Leveraging Tools and Technologies
+6. Demonstration
+7. Q&A
+
+---
+
+# Introduction to Containerization
+
+- What is Containerization?
+- Why is it important for .NET developers?
+- Understanding Containers vs. VMs
+
+---
+
+# Microservices and Cloud-Native Applications
+
+- Defining Microservices Architecture
+- Benefits of Cloud-Native Applications
+- How containers support Microservices and Cloud-Native Apps
+
+---
+
+# Deep Dive into .NET and Containers
+
+- Containerizing a .NET App: A Step-by-Step Guide
+- Understanding Docker and Kubernetes in .NET
+- Best Practices for Containerized .NET Applications
+
+---
+
+# Dockerfile
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+WORKDIR /App
+
+# Copy everything
+COPY . ./
+# Restore as distinct layers
+RUN dotnet restore
+# Build and publish a release
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /App
+COPY --from=build-env /App/out .
+ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
+```
+
+---
+
+# Security in Containerized .NET Apps
+
+- Security Challenges in Containerization
+- Best Practices for Securing .NET Containers
+- Tools and Techniques for Enhanced Security
+
+---
+
+# Leveraging Tools and Technologies
+
+- Essential Tools for .NET Container Deployment
+- Automating and Optimizing Deployment Processes
+- Overview of Kubernetes, Docker Compose, and other tools
+
 ---
 
 # Other Tools
