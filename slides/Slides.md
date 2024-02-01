@@ -4,7 +4,7 @@ theme: custom-default
 footer: 'https://chris-ayers.com'
 ---
 
-# <!--fit-->Containerizing<br/>.NET Applications
+# <!--fit-->Containerizing <i class="fas fa-box"></i><br/>.NET Applications
 ## Chris Ayers
 ![bg right:50%](./img/dotnet-logo.png)
 
