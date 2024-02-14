@@ -6,8 +6,10 @@
     <RootNamespace>hello_containers</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ContainerFamily>jammy-chiseled</ContainerFamily>
-    <ContainerRepository>hello-containers-chiseled</ContainerRepository>
+    <!-- <ContainerFamily>jammy-chiseled</ContainerFamily>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishAot>true</PublishAot> -->
+    <UserSecretsId>b38fb62b-c5c6-4765-8dfb-5cfc18e9a6ad</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
