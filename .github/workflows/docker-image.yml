@@ -52,6 +52,28 @@ jobs:
 
       - name: Build Docker Image
         uses: docker/build-push-action@v5
+        id: build
+        with:
+          context: src/SampleApi
+          push: false
+          tags: ${{ env.IMAGE_NAME }}:${{ env.TAG }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  
+      - name: Run Trivy vulnerability scanner
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ fromJSON(steps.build.outputs.metadata)['image.name'] }}
+          format: 'github'
+          github-pat: ${{ github.token }}
+        env:
+          TRIVY_USERNAME: Username
+          TRIVY_PASSWORD: Password
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v5
         id: build-and-push
         with:
           context: src/SampleApi
@@ -60,18 +82,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Run Trivy vulnerability scanner
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ${{ fromJSON(steps.build-and-push.outputs.metadata)['image.name'] }}
-          format: 'github'
-          github-pat: ${{ github.token }}
-        env:
-          TRIVY_USERNAME: Username
-          TRIVY_PASSWORD: Password
-
-      # Sign the resulting Docker image digest except on PRs.
+        # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
       # repository is public to avoid leaking data.  If you would like to publish
       # transparency data even for private images, pass --force to cosign below.
