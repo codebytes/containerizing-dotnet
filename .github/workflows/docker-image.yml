@@ -44,5 +44,4 @@ jobs:
           context: src/SampleApi
           push: true
           tags: |
-            ${{ env.REPO }}:latest
-            ${{ env.REPO }}:${{ env.TAG }}
+            ${{ vars.DOCKER_LOGIN_SERVER }}/${{ env.REPO }}:${{ env.TAG }}
