@@ -181,24 +181,17 @@ Container images bundle application code with the necessary runtime, libraries, 
 
 ---
 
-# Image Tagging and Management
-## Organizing and Versioning
-
-- **Tagging**: Assigns identifiable tags to Docker images, aiding in version control and organization.
-- **Best Practices**:
-  - Use semantic versioning or specific build identifiers.
-  - Maintain clear and consistent tagging conventions for easy tracking.
-
----
-
 # Image Tags: Stable vs Unique
 
-| Stable Tags | Unique Tags    |
-|-------------|----------------|
-| latest      | sha256:1234567890 |
-| stable      | build-1234     |
-| v1.0        | 2022-01-01     |
-|             | 1.0.0          |
+- Use semantic versioning or specific build identifiers.
+- Maintain clear and consistent tagging conventions for easy tracking.
+
+> | Stable Tags | Unique Tags    |
+> |-------------|----------------|
+> | latest      | sha256:1234567890 |
+> | stable      | build-1234     |
+> | v1.0        | 2022-01-01     |
+> | production  | 1.0.2         |
 
 ---
 
