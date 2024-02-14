@@ -329,6 +329,20 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 
 ---
 
+# Azure Developer CLI (azd)
+
+The `azd init` command is designed to simplify and accelerate the containerization process for .NET applications, making it easier to deploy them to Azure.
+  - Automatically generates Dockerfiles and Azure resource definitions based on the application structure.
+  - Configures the application for optimal deployment to Azure, including Azure Container Apps (ACA) or Azure Kubernetes Service (AKS).
+  - **Rapid Setup**: Get your application containerized and ready for Azure in minutes.
+  - **No Deep Expertise Required**: Abstracts away the complexity of Docker and Kubernetes configurations.
+
+---
+
+# DEMOS
+
+---
+
 # Ideal .NET Container Images
 > Microsoft has been providing .NET Container images for almost 10 years.
 > Consistent Themes
@@ -353,11 +367,17 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 
 ---
 
+# DEMOS
+
+---
+
 # Configuration
 
 ---
-# Configuring .NET Containers
-### Using Environment Variables & Azure Services
+
+#  .NET Configuration
+
+![w:950px](./img/configuration-providers.png)
 
 ---
 
@@ -366,6 +386,39 @@ Externalize app settings for easy updates without image rebuilds.
 - Define variables in deployment manifests or service configurations.
 - Simplify configuration management.
 - Enhance application portability across environments.
+
+---
+
+# Docker Compose
+
+```docker
+catalog-api:
+    image: eshop/catalog-api
+    environment:
+      - ConnectionString=Server=sqldata;Initial Catalog=CatalogData;User Id=sa;Password=[PLACEHOLDER]
+    expose:
+      - "80"
+    ports:
+      - "5101:80"
+```
+
+---
+
+# Kubernetes Manifest
+
+```yaml
+spec:
+  template:
+    spec:
+      containers:
+      - name: sampleapi
+        image: codebytes/sampleapi:1.0.1
+        env:
+          - name: "ASPNETCORE_ENVIRONMENT"
+            value: "Production"
+          - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
+            value: "true"
+```
 
 ---
 
@@ -413,7 +466,6 @@ Identify security vulnerabilities and compliance issues in container images.
 ---
 
 # Container Security: Root vs. Non-Root Users
-### Understanding User Privileges
 
 ---
 
@@ -435,6 +487,10 @@ Identify security vulnerabilities and compliance issues in container images.
   - Complies with security best practices and regulatory requirements.
 - **Limitations**: 
   - May require additional configuration for certain applications.
+
+---
+
+# Demos
 
 ---
 
