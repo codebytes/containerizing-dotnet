@@ -30,18 +30,28 @@ jobs:
           registry: ${{ vars.DOCKER_LOGIN_SERVER }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Build and export to Docker
+      - name: Build Docker Image
         uses: docker/build-push-action@v5
         with:
           context: src/SampleApi
           load: true
           push: false
-          tags: ${{ env.TAG }}
-
-      - name: Build and push
+          tags: ${{ env.REPO }}:${{ env.TAG }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image: 
+          image-ref: 'docker.io/library/${{ env.REPO }}:${{ env.TAG }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+        env:
+          TRIVY_USERNAME: Username
+          TRIVY_PASSWORD: Password
+      - name: Push image to ACR
         uses: docker/build-push-action@v5
         with:
           context: src/SampleApi
           push: true
           tags: |
+            ${{ vars.DOCKER_LOGIN_SERVER }}/${{ env.REPO }}:latest
             ${{ vars.DOCKER_LOGIN_SERVER }}/${{ env.REPO }}:${{ env.TAG }}
