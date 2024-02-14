@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to an Azure Web App
+name: Dotnet Publish to ACR
 
 on:
   push:
@@ -37,5 +37,9 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build with dotnet
-        run: dotnet publish -c Release -t:PublishContainer -p ContainerRepository=${{ vars.DOCKER_LOGIN_SERVER }}/${{ env.IMAGE_NAME }} -p ContainerRegistry=${{ vars.DOCKER_LOGIN_SERVER }}
+        run: |
+            dotnet publish -c Release -t:PublishContainer  
+            -p ContainerRepository=${{ env.IMAGE_NAME }} 
+            -p ContainerRegistry=${{ vars.DOCKER_LOGIN_SERVER }}
+            -p ContainerImageTag=${{ env.TAG }}
         working-directory: src/SampleApi
