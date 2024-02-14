@@ -25,13 +25,13 @@ footer: 'https://chris-ayers.com'
 
 # Agenda
 
-1. **Introduction to Containerization**
-2. **Microservices and Cloud-Native Applications**
-3. **Deep Dive into .NET and Containers**
-4. **Security in Containerized .NET Apps**
-5. **Leveraging Tools and Technologies**
+1. **Software and Architecture**
+2. **Containerization**
+3. **.NET and Containers**
+4. **Configuration**
+5. **Security**
 6. **Demos**
-7. **Q&A Session**
+7. **Questions**
 
 ---
 
@@ -105,6 +105,14 @@ footer: 'https://chris-ayers.com'
 - Assesses your application for 
 - Detects issues and provides recommendations
 - Provides a detailed report
+
+---
+
+# DAPR - Distributed Application Runtime
+
+Dapr provides integrated APIs for communication, state, and workflow. Dapr leverages industry best practices for security, resiliency, and observability, so you can focus on your code.
+
+![bg right fit ](./img/dapr.png)
 
 ---
 
@@ -287,7 +295,7 @@ Microsoft provides official .NET container images for various scenarios, includi
 
 ---
 
-# Efficient Builds & Security
+# Build & Security Best Practices 
 - **.dockerignore**: Exclude non-essential files to speed up builds and enhance security.
 - **Multi-Stage Builds**: Separate build and output stages to reduce image size and include only necessary files.
 - **Image Optimization**:
@@ -328,14 +336,20 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 - Options
 
 ---
-
 # Azure Developer CLI (azd)
 
-The `azd init` command is designed to simplify and accelerate the containerization process for .NET applications, making it easier to deploy them to Azure.
-  - Automatically generates Dockerfiles and Azure resource definitions based on the application structure.
-  - Configures the application for optimal deployment to Azure, including Azure Container Apps (ACA) or Azure Kubernetes Service (AKS).
-  - **Rapid Setup**: Get your application containerized and ready for Azure in minutes.
-  - **No Deep Expertise Required**: Abstracts away the complexity of Docker and Kubernetes configurations.
+- `azd init` accelerates containerization for .NET apps, preparing them for Azure deployment.
+- Generates Dockerfiles and Azure resources automatically.
+- Supports Azure Container Apps (ACA) and Azure Kubernetes Service (AKS) deployment.
+- Simplifies setup and abstracts Docker/Kubernetes complexities for rapid Azure deployment.
+
+---
+
+## .NET Aspire Overview
+
+- Provides an opinionated framework for building observable, distributed .NET applications ready for the cloud.
+- Offers a suite of NuGet packages for common cloud-native application needs.
+- Facilitates the development of microservices and distributed apps with seamless service integration.
 
 ---
 
