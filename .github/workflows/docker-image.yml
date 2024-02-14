@@ -42,7 +42,7 @@ jobs:
         with:
           image-ref: 'docker.io/library/${{ env.REPO }}:${{ env.TAG }}'
           format: 'github'
-          github-token: ${{ github.token }}
+          github-pat: ${{ github.token }}
         env:
           TRIVY_USERNAME: Username
           TRIVY_PASSWORD: Password
