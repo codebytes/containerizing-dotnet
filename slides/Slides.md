@@ -35,14 +35,11 @@ footer: 'https://chris-ayers.com'
 
 ---
 
-# Introduction to Containerization
-## Embracing Modern Deployment
+# Understanding Containerization
 
-- **Containerization**: The process of encapsulating software code and all its dependencies into a single package.
-- **Key Benefits**:
-  - Consistent application behavior across different environments.
-  - Accelerated deployment and enhanced scalability.
-  - Optimized for microservices and cloud-native application architectures.
+- Containerization encapsulates software and its dependencies within a single package
+- Streamlines deployment across diverse environments
+- Ensures uniform application performance.
 
 ---
 
@@ -62,7 +59,8 @@ Container
 
 <div>
 
-Virtual Machines (VMs)         
+Virtual Machines (VMs)
+
 ![width:400px](./img/vm.png) 
 - Larger images (GBs)          
 - Slow (OS needs full init)    
@@ -71,11 +69,91 @@ Virtual Machines (VMs)
 
 
 </div>
+
 </div>
 
 ---
 
+# Let's define a few Container Terms
+
+---
+
+# Container Images
+
+![bg right:40%](./img/container-image.png)
+
+Executable packages that include code, runtime, libraries, and configs. They ensure consistent application behavior across environments by encapsulating all necessary components.
+
+---
+
+# Diving Deeper: Image Layers
+
+**Layered File System**
+  - **Immutable**: Once created, layers are never modified.
+  - **Reusable**: Layers can be shared across multiple images.
+
+![w:1080px](./img/container-layers.drawio.png)
+
+---
+
+# Container Registries
+
+<div class="columns">
+<div>
+
+
+Services for storing, managing, and sharing container images. They offer version and access control, facilitating secure and efficient distribution of images across development teams.
+
+
+</div>
+<div class="center">
+
+![w:150px](./img/acr-logo.png)![w:150px](./img/github-packages-logo.png)
+![w:150px](./img/docker-hub-logo.png)![w:150px](./img/harbor-logo.png)
+
+</div>
+</div>
+
+---
+
+# Container Runtimes
+
+<div class="columns">
+<div>
+
+Software responsible for running containers and managing their lifecycle. Examples include Docker and containerd, providing the necessary environment for containers to execute.
+There are high and low level runtimes.
+
+</div>
+<div class="center">
+
+![w:200px](./img/containerd-logo.png)![w:300px](./img/crio-logo.png)![w:200px](./img/podman-logo.png)![w:300px](./img/runc-logo.png)
+
+</div>
+</div>
+
+---
+
+# Open Container Initiative (OCI)
+
+![bg right 80%](./img/oci-logo.png)
+
+A project under the Linux Foundation aiming to create open standards for container formats and runtime. It promotes interoperability and compatibility across different tools and platforms.
+
+---
+
+# Relationship between the Terms
+
+<br/>
+
+![w:1080](./img/relationship.drawio.png)
+
+---
+
 # Microservices Architecture
+
+---
+
 ## Revolutionizing Software Development
 
 - **Microservices**: Architectural style that structures an application as a collection of loosely coupled services.
@@ -116,12 +194,31 @@ Virtual Machines (VMs)
 
 ---
 
-# Deep Dive into .NET and Containers
-## A Comprehensive Guide
+# .NET Containers
 
-- **Containerizing .NET Applications**: Detailed walkthrough from development to deployment.
-- **Utilizing Docker and Kubernetes**: Harnessing container orchestration for .NET applications.
-- **Best Practices**: Ensuring optimal performance, security, and maintainability.
+---
+
+# Ideal .NET Container Images
+> Microsoft has been providing .NET Container images for almost 10 years.
+> Consistent Themes
+- **Small** (faster registry pulls)
+- **Secure** (non-root by default, no shell or tools)
+- **Compliant** (minimal dependencies)
+- **Composable** (add localizations, etc. as needed)
+- **Compatible** (glibc vs musl libc)
+- **Supported** (long-term support)
+
+---
+
+![bg fit](./img/image-sizes.png)
+
+---
+
+![bg fit](./img/image-general.png)
+
+---
+
+![bg fit](./img/chiseled.png)
 
 ---
 
@@ -135,7 +232,6 @@ Virtual Machines (VMs)
 ---
 
 # Multi-Stage Docker Builds
-## Efficient Image Creation
 
 - **Concept**: Multi-stage builds separate the building and running of applications into different stages.
 - **Advantages**:
