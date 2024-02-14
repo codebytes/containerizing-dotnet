@@ -35,11 +35,80 @@ footer: 'https://chris-ayers.com'
 
 ---
 
-# Understanding Containerization
+# Software and Architecture
 
-- Containerization encapsulates software and its dependencies within a single package
-- Streamlines deployment across diverse environments
-- Ensures uniform application performance.
+---
+
+# Microservices
+- Architectural style that structures an application as a collection of loosely coupled services. 
+- Improved modularity
+- Applications are easier to develop, test, deploy, and scale.
+- Each service can be deployed independently, enabling faster iterations.
+
+---
+
+# Cloud-Native Applications
+
+- Applications designed to capitalize on cloud computing frameworks.
+- Built and run in cloud environments.
+- Emphasize automation, scalability, and manageability.
+- Rely on containerization for deployment.
+
+---
+
+# Build and Deployment Patterns 
+- Rapid provisioning and scaling.
+- Uniform development environments.
+- Seamless compatibility with cloud services.
+- Observability and monitoring.
+
+---
+
+# Make sure your application is ready for containers
+
+<div class="columns">
+<div>
+
+- Understand Dependencies
+  - File Access
+  - Authentication
+  - Logging
+  - OS Dependent components
+  - Versions
+</div>
+<div>
+
+- State Management
+  - Session State
+  - Caching
+  - Database
+  - File system
+</div>
+</div>
+
+---
+
+# .NET Version Support
+![.NET Version Support](img/dotnet-versions.png)
+
+---
+
+# .NET Version Support - Zoomed
+![center w:900px](img/dotnet-versions-zoom.png)
+
+---
+
+# Azure Migrate application and code assessment for .NET
+## AppCat
+
+- Available as a VS extension or cli tool
+- Assesses your application for 
+- Detects issues and provides recommendations
+- Provides a detailed report
+
+---
+
+# Containerization
 
 ---
 
@@ -78,21 +147,50 @@ Virtual Machines (VMs)
 
 ---
 
-# Container Images
+# Open Container Initiative (OCI)
 
-![bg right:40%](./img/container-image.png)
+![bg right 60%](./img/oci-logo.png)
 
-Executable packages that include code, runtime, libraries, and configs. They ensure consistent application behavior across environments by encapsulating all necessary components.
+- A project under the Linux Foundation aiming to create open standards for container formats and runtime. 
+- It promotes interoperability and compatibility across different tools and platforms.
 
 ---
 
-# Diving Deeper: Image Layers
+# Container Images
 
-**Layered File System**
-  - **Immutable**: Once created, layers are never modified.
-  - **Reusable**: Layers can be shared across multiple images.
+![bg right:40% w:550px](./img/container-image.png)
+
+Container images bundle application code with the necessary runtime, libraries, and configurations. They utilize a **Layered File System** for efficient storage and distribution:
+- **Immutable Layers**: Each layer is fixed once created, ensuring consistency.
+- **Reusability**: Shared layers across images reduce storage and speed up deployments.
+  
+---
+
+# Exploring Image Layers
+- **Efficiency Through Layering**: Image layers maximize reusability and minimize storage requirements by sharing common layers between images.
 
 ![w:1080px](./img/container-layers.drawio.png)
+
+---
+
+# Image Tagging and Management
+## Organizing and Versioning
+
+- **Tagging**: Assigns identifiable tags to Docker images, aiding in version control and organization.
+- **Best Practices**:
+  - Use semantic versioning or specific build identifiers.
+  - Maintain clear and consistent tagging conventions for easy tracking.
+
+---
+
+# Image Tags: Stable vs Unique
+
+| Stable Tags | Unique Tags    |
+|-------------|----------------|
+| latest      | sha256:1234567890 |
+| stable      | build-1234     |
+| v1.0        | 2022-01-01     |
+|             | 1.0.0          |
 
 ---
 
@@ -101,12 +199,15 @@ Executable packages that include code, runtime, libraries, and configs. They ens
 <div class="columns">
 <div>
 
-
-Services for storing, managing, and sharing container images. They offer version and access control, facilitating secure and efficient distribution of images across development teams.
-
+Central hubs for storing, managing, and distributing container images, featuring:
+- Version and access control for secure collaboration.
+- Security scanning to detect vulnerabilities.
+- CI/CD integration for automated deployment workflows.
 
 </div>
 <div class="center">
+
+<br/>
 
 ![w:150px](./img/acr-logo.png)![w:150px](./img/github-packages-logo.png)
 ![w:150px](./img/docker-hub-logo.png)![w:150px](./img/harbor-logo.png)
@@ -121,11 +222,16 @@ Services for storing, managing, and sharing container images. They offer version
 <div class="columns">
 <div>
 
-Software responsible for running containers and managing their lifecycle. Examples include Docker and containerd, providing the necessary environment for containers to execute.
-There are high and low level runtimes.
+Container runtimes are the engines that run containers and manage their lifecycles, with different levels of abstraction:
+- High-Level Runtimes: Offer ease of use and extended features for developers.
+- Low-Level Runtimes: Focus on performance and fundamental container operations.
 
 </div>
 <div class="center">
+
+<br/>
+<br/>
+<br/>
 
 ![w:200px](./img/containerd-logo.png)![w:300px](./img/crio-logo.png)![w:200px](./img/podman-logo.png)![w:300px](./img/runc-logo.png)
 
@@ -134,15 +240,7 @@ There are high and low level runtimes.
 
 ---
 
-# Open Container Initiative (OCI)
-
-![bg right 80%](./img/oci-logo.png)
-
-A project under the Linux Foundation aiming to create open standards for container formats and runtime. It promotes interoperability and compatibility across different tools and platforms.
-
----
-
-# Relationship between the Terms
+# How its all Connected
 
 <br/>
 
@@ -150,51 +248,84 @@ A project under the Linux Foundation aiming to create open standards for contain
 
 ---
 
-# Microservices Architecture
+# Container Patterns Support a Self-Healing Model
+
+![bg right fit](./img/cluster.png)
 
 ---
 
-## Revolutionizing Software Development
+# .NET and Containers
 
-- **Microservices**: Architectural style that structures an application as a collection of loosely coupled services.
-- **Advantages**:
-  - Improved modularity
-  - Applications are easier to develop, test, deploy, and scale.
-  - Each service can be deployed independently, enabling faster iterations.
-
----
-
-# Cloud-Native Applications
-## Leveraging the Full Potential of the Cloud
-
-- **Cloud-Native**: Applications designed to capitalize on cloud computing frameworks.
-- **Characteristics**:
-  - Built and run in cloud environments.
-  - Emphasize automation, scalability, and manageability.
-  - Rely on containerization for deployment.
+- **Portability**
+- **Consistency**
+- **Scalability**
+- **Isolation**
+- **Security**
+- **Resource Efficiency**
 
 ---
 
-# Containers and Microservices: Synergy <i class="fas fa-handshake"></i>
-## Enhancing Application Architecture
+# Official .NET Container Images
 
-- **Role of Containers**: Provide a consistent and isolated environment for each microservice.
-- **Impact**:
-  - Simplified management and scaling of microservices.
-  - Streamlined continuous integration and deployment (CI/CD) processes.
+Microsoft provides official .NET container images for various scenarios, including:
+
+- **Development**: .NET SDK images for building and testing applications.
+  - dotnet/sdk: .NET SDK
+- **Runtime**: .NET Runtime images for running applications.
+  - dotnet/aspnet: ASP.NET Core Runtime
+  - dotnet/runtime: .NET Runtime
+  - dotnet/runtime-deps: .NET Runtime Dependencies
+
+--- 
+
+# Dockerfiles
+
+- **Basics**: Dockerfiles define the steps to create a container image for applications.
+- **Structure**: Includes base image selection, copying application files, and setting up entry points.
+- **Customization**: Tailoring Dockerfiles for specific application requirements.
+![dockerfiles](./img/dockerfiles.png)
 
 ---
 
-# Leveraging Containers for Cloud-Native Apps
-## Strategies and Best Practices
-
-- **Optimized Deployment**: Rapid provisioning and scaling.
-- **Developer Productivity**: Uniform development environments.
-- **Integration with Cloud Ecosystem**: Seamless compatibility with cloud services.
+# Efficient Builds & Security
+- **.dockerignore**: Exclude non-essential files to speed up builds and enhance security.
+- **Multi-Stage Builds**: Separate build and output stages to reduce image size and include only necessary files.
+- **Image Optimization**:
+  - Use minimal base images and avoid unnecessary packages.
+  - Leverage caching for faster builds.
+  - Regularly update base images to patch vulnerabilities.
+  - Scan images for security issues.
 
 ---
 
-# .NET Containers
+# Dockerfile
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+WORKDIR /App
+
+# Copy everything
+COPY . ./
+# Restore as distinct layers
+RUN dotnet restore
+# Build and publish a release
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /App
+COPY --from=build-env /App/out .
+ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
+```
+
+---
+
+# .NET Containers Without Dockerfiles
+
+- **Simplicity**: The `dotnet` CLI enables building and publishing containers directly to a registry.
+- **Direct Publish**: Specify your target registry and repository in the project file or command line.
+- **Example**: Publish a .NET app as a container using the `-p:PublishContainer` option.
+- Options
 
 ---
 
@@ -222,77 +353,48 @@ A project under the Linux Foundation aiming to create open standards for contain
 
 ---
 
-# Dockerfiles in .NET
-## The Foundation of Containerization
-
-- **Basics**: Dockerfiles define the steps to create a container image for .NET applications.
-- **Structure**: Includes base image selection, copying application files, and setting up entry points.
-- **Customization**: Tailoring Dockerfiles for specific application requirements.
-
----
-
-# Multi-Stage Docker Builds
-
-- **Concept**: Multi-stage builds separate the building and running of applications into different stages.
-- **Advantages**:
-  - Reduced image size by excluding unnecessary build tools and files in the final image.
-  - Enhanced security by minimizing the attack surface on runtime containers.
-
----
-
-# Dockerfile
-
-```dockerfile
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
-WORKDIR /App
-
-# Copy everything
-COPY . ./
-# Restore as distinct layers
-RUN dotnet restore
-# Build and publish a release
-RUN dotnet publish -c Release -o out
-
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /App
-COPY --from=build-env /App/out .
-ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
-```
-
----
-
-# Image Tagging and Management
-## Organizing and Versioning
-
-- **Tagging**: Assigns identifiable tags to Docker images, aiding in version control and organization.
-- **Best Practices**:
-  - Use semantic versioning or specific build identifiers.
-  - Maintain clear and consistent tagging conventions for easy tracking.
-
----
-
 # Configuration
 
 ---
-
-# Configuration with Environment Variables
-## Dynamic Application Settings
-
-- **Usage**: Configure .NET applications in containers using environment variables.
-- **Benefits**:
-  - Externalizes configuration from the application, allowing for flexibility.
-  - Facilitates easy updates and modifications without rebuilding images.
+# Configuring .NET Containers
+### Using Environment Variables & Azure Services
 
 ---
 
-# Implementing CSI Secret Store
-## Secure Secret Management
+## Environment Variables
+Externalize app settings for easy updates without image rebuilds.
+- Define variables in deployment manifests or service configurations.
+- Simplify configuration management.
+- Enhance application portability across environments.
 
-- **Introduction**: CSI Secret Store provides a secure way to store and manage sensitive information.
-- **Integration with .NET**:
-  - Seamlessly integrates with Kubernetes, enhancing the security of .NET containerized applications.
-  - Automates the injection of secrets into containers at runtime.
+---
+
+## Azure App Configuration Integration
+- **Centralized Management**: Store all application settings and feature flags.
+- **Dynamic Updates**: Refresh settings without redeploying or restarting applications.
+- **Security**: Leverage Managed Identities for secure access without credentials in code.
+
+---
+
+# Securely Managing Secrets
+### CSI Secret Store & Azure KeyVault
+
+---
+
+## Azure Key Vault for Sensitive Data
+- **Secure Storage**: Keep application secrets, keys, and certificates in a secure vault.
+- **Integration**: Easily integrate with .NET applications using the Azure SDK.
+- **Access Control**: Fine-grained permissions for secure access management.
+
+---
+
+## CSI Secret Store & .NET Integration
+- Securely store and manage secrets for .NET applications in Kubernetes.
+- **Features**:
+  - Automates secret injection into .NET containers at runtime.
+  - Leverages Kubernetes' native capabilities for enhanced security.
+  - Simplifies secret management.
+  - Ensures sensitive data is securely handled and easily accessible to authorized containers only.
 
 ---
 
@@ -300,41 +402,39 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 
 ---
 
-# Security in Containerized .NET Apps
-## Safeguarding Your Applications
-
-- **Challenges**: Identifying and addressing security risks in containerized environments.
-- **Security Measures**: Implementing best practices for securing .NET containers.
-- **Essential Tools**: Leveraging advanced tools for security enhancement.
-
----
-
 # Container Scanning in .NET
 ## Ensuring Security and Compliance
 
-- **Purpose**: Identifies security vulnerabilities and compliance issues in container images.
+Identify security vulnerabilities and compliance issues in container images.
 - **Tools and Practices**:
-  - Utilize tools like Clair, Trivy, or Docker Scan.
+  - Utilize tools like Qualys, Synk, Trivy, or Docker Scan.
   - Regularly scan images during development and before deployment.
+  
+---
+
+# Container Security: Root vs. Non-Root Users
+### Understanding User Privileges
 
 ---
 
-# Leveraging Tools and Technologies
-## Empowering Your Containerization Journey
-
-- **Essential Tools**: Overview of critical tools for container management and deployment.
-- **Automation**: Strategies for automating deployment and management processes.
-- **Technology Overview**: Exploring Kubernetes, Docker Compose, and other pivotal technologies.
+## Running Containers as Root
+- **Default Behavior**: Many containers run as root by default for ease of use.
+- **Risks**:
+  - Increased attack surface if the container is compromised.
+  - Potential for escalated privileges on the host system.
+- **Security Practices**:
+  - Minimize use of root privileges.
+  - Implement least privilege principles for container processes.
 
 ---
 
-# Other Tools
-
-- https://github.com/lippertmarkus/konet
-- https://github.com/dotnet/docker-tools
-- https://github.com/tmds/build-image
-- https://github.com/dotnet/sdk-container-builds
-- https://github.com/dotnet/dotnet-docker
+## Use Non-Root Users
+- **Enhanced Security**: Running as a non-root user reduces risks of privilege escalation.
+- **Benefits**:
+  - Limits the impact of a security breach within the container.
+  - Complies with security best practices and regulatory requirements.
+- **Limitations**: 
+  - May require additional configuration for certain applications.
 
 ---
 
