@@ -55,6 +55,7 @@ jobs:
         id: build
         with:
           context: src/SampleApi
+          load: true
           push: false
           tags: ${{ env.IMAGE_NAME }}:${{ env.TAG }}
           labels: ${{ steps.meta.outputs.labels }}
