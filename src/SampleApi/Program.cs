@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,10 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.MapHealthChecks("/healthz");
+app.MapHealthChecks("/ready", new HealthCheckOptions { Predicate = _ => true });
+app.MapHealthChecks("/live", new HealthCheckOptions { Predicate = _ => true });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
