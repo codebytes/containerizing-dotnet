@@ -41,5 +41,5 @@ jobs:
             dotnet publish -c Release -t:PublishContainer \
             -p ContainerRepository=${{ env.IMAGE_NAME }} \
             -p ContainerRegistry=${{ vars.DOCKER_LOGIN_SERVER }} \
-            -p ContainerImageTag=${{ env.TAG }}
+            -p ContainerImageTag="${{ env.TAG }};latest"
         working-directory: src/SampleApi
