@@ -249,12 +249,6 @@ Container runtimes are the engines that run containers and manage their lifecycl
 
 ---
 
-# Container Patterns Support a Self-Healing Model
-
-![bg right fit](./img/cluster.png)
-
----
-
 # .NET and Containers
 
 - **Portability**
