@@ -61,6 +61,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Run Trivy vulnerability scanner
+        if: ${{ github.event_name != 'pull_request' }}
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: ${{ fromJSON(steps.build-and-push.outputs.metadata)['image.name'] }}
