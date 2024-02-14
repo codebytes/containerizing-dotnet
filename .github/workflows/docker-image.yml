@@ -40,10 +40,8 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image: 
           image-ref: 'docker.io/library/${{ env.REPO }}:${{ env.TAG }}'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+          format: 'github'
         env:
           TRIVY_USERNAME: Username
           TRIVY_PASSWORD: Password
