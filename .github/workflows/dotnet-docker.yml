@@ -38,8 +38,8 @@ jobs:
 
       - name: Build with dotnet
         run: |
-            dotnet publish -c Release -t:PublishContainer  
-            -p ContainerRepository=${{ env.IMAGE_NAME }} 
-            -p ContainerRegistry=${{ vars.DOCKER_LOGIN_SERVER }}
+            dotnet publish -c Release -t:PublishContainer \
+            -p ContainerRepository=${{ env.IMAGE_NAME }} \
+            -p ContainerRegistry=${{ vars.DOCKER_LOGIN_SERVER }} \
             -p ContainerImageTag=${{ env.TAG }}
         working-directory: src/SampleApi
