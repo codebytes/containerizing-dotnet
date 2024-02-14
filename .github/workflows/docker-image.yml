@@ -44,5 +44,5 @@ jobs:
           context: src/SampleApi
           push: true
           tags: |
-            ${{ env.repo }}:latest
-            ${{ env.repo }}:${{ github.sha }}
+            ${{ env.REPO }}:latest
+            ${{ env.REPO }}:${{ env.TAG }}
