@@ -42,9 +42,11 @@ jobs:
         with:
           image-ref: 'docker.io/library/${{ env.REPO }}:${{ env.TAG }}'
           format: 'github'
+          github-token: ${{ github.token }}
         env:
           TRIVY_USERNAME: Username
           TRIVY_PASSWORD: Password
+
       - name: Push image to ACR
         uses: docker/build-push-action@v5
         with:
