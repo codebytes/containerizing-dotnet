@@ -52,6 +52,7 @@ jobs:
 
       - name: Build Docker Image
         uses: docker/build-push-action@v5
+        id: build-and-push
         with:
           context: src/SampleApi
           push: ${{ github.event_name != 'pull_request' }}
