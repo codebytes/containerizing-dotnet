@@ -491,6 +491,24 @@ Identify security vulnerabilities and compliance issues in container images.
 
 ---
 
+## Kubernetes Restricted Policy
+The **Restricted** policy enhances security for critical applications by enforcing pod hardening practices.
+
+```
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+      - name: aspnetapp
+        image: mcr.microsoft.com/dotnet/samples:aspnetapp-chiseled
+        ports:
+        - containerPort: 8080
+```
+
+[Learn more about Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted)
+
+---
+
 # Demos
 
 ---
