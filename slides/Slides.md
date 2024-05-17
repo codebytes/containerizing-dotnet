@@ -195,6 +195,14 @@ Container images bundle application code with the necessary runtime, libraries, 
 
 ---
 
+# How its all Connected
+
+<br/>
+
+![w:1080](./img/relationship.drawio.png)
+
+---
+
 # Container Registries
 
 <div class="columns">
@@ -238,14 +246,6 @@ Container runtimes are the engines that run containers and manage their lifecycl
 
 </div>
 </div>
-
----
-
-# How its all Connected
-
-<br/>
-
-![w:1080](./img/relationship.drawio.png)
 
 ---
 
@@ -321,22 +321,6 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 - **Direct Publish**: Specify your target registry and repository in the project file or command line.
 - **Example**: Publish a .NET app as a container using the `-p:PublishContainer` option.
 - Options
-
----
-# Azure Developer CLI (azd)
-
-- `azd init` accelerates containerization for .NET apps, preparing them for Azure deployment.
-- Generates Dockerfiles and Azure resources automatically.
-- Supports Azure Container Apps (ACA) and Azure Kubernetes Service (AKS) deployment.
-- Simplifies setup and abstracts Docker/Kubernetes complexities for rapid Azure deployment.
-
----
-
-## .NET Aspire Overview
-
-- Provides an opinionated framework for building observable, distributed .NET applications ready for the cloud.
-- Offers a suite of NuGet packages for common cloud-native application needs.
-- Facilitates the development of microservices and distributed apps with seamless service integration.
 
 ---
 
@@ -510,6 +494,23 @@ The **Restricted** policy enhances security for critical applications by enforci
 ---
 
 # Demos
+
+---
+
+# Azure Developer CLI (azd)
+
+- `azd init` accelerates containerization for .NET apps, preparing them for Azure deployment.
+- Generates Dockerfiles and Azure resources automatically.
+- Supports Azure Container Apps (ACA) and Azure Kubernetes Service (AKS) deployment.
+- Simplifies setup and abstracts Docker/Kubernetes complexities for rapid Azure deployment.
+
+---
+
+## .NET Aspire Overview
+
+- Provides an opinionated framework for building observable, distributed .NET applications ready for the cloud.
+- Offers a suite of NuGet packages for common cloud-native application needs.
+- Facilitates the development of microservices and distributed apps with seamless service integration.
 
 ---
 
