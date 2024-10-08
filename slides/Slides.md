@@ -224,20 +224,6 @@ Central hubs for storing, managing, and distributing container images, featuring
 
 ---
 
-# Image Tags: Stable vs Unique
-
-- Use semantic versioning or specific build identifiers.
-- Maintain clear and consistent tagging conventions for easy tracking.
-
-> | Stable Tags | Unique Tags    |
-> |-------------|----------------|
-> | latest      | sha256:1234567890 |
-> | stable      | build-1234     |
-> | v1.0        | 2022-01-01     |
-> | production  | 1.0.2         |
-
----
-
 # Container Runtimes
 
 <div class="columns">
@@ -255,6 +241,36 @@ Container runtimes are the engines that run containers and manage their lifecycl
 <br/>
 
 ![w:200px](./img/containerd-logo.png)![w:300px](./img/crio-logo.png)![w:200px](./img/podman-logo.png)![w:300px](./img/runc-logo.png)
+
+</div>
+</div>
+
+---
+
+# Image Tags: Stable vs Unique
+
+<div class="columns">
+<div>
+
+## Stable Tags
+
+Stable tags help maintain base images for container builds. Avoid using them for deployments since they receive updates that might cause inconsistencies in production. Examples include:
+
+- latest
+- stable
+- v1.0
+- production
+
+</div>
+<div>
+
+## Unique Tags
+
+Unique tags track specific builds or versions of an image. They often include build numbers, commit hashes, or timestamps. These are great for CI/CD pipelines and testing environments. Examples include:
+- sha256:1234567890
+- build-1234
+- 2022-01-01
+- 1.0.2
 
 </div>
 </div>
