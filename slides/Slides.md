@@ -4,7 +4,9 @@ theme: custom-default
 footer: 'https://chris-ayers.com'
 ---
 
-# <!--fit-->Containerizing <i class="fas fa-box"></i><br/>.NET Applications
+# <!--fit-->.NET In a Box <i class="fas fa-box"></i>
+
+## <!--fit-->Containerizing <br/>.NET Applications
 ## Chris Ayers
 ![bg right:50%](./img/dotnet-logo.png)
 
@@ -26,7 +28,7 @@ footer: 'https://chris-ayers.com'
 # Agenda
 
 1. **Software and Architecture**
-2. **Containerization**
+2. **Containerization Basics**
 3. **.NET and Containers**
 4. **Configuration**
 5. **Security**
@@ -105,14 +107,20 @@ footer: 'https://chris-ayers.com'
 - Assesses your application for 
 - Detects issues and provides recommendations
 - Provides a detailed report
+- https://learn.microsoft.com/en-us/azure/migrate/appcat/dotnet
 
 ---
 
 # DAPR - Distributed Application Runtime
 
-Dapr provides integrated APIs for communication, state, and workflow. Dapr leverages industry best practices for security, resiliency, and observability, so you can focus on your code.
+Dapr provides integrated APIs for communication, state, and workflow.
 
-![bg right fit ](./img/dapr.png)
+<video width="100%" autoplay loop muted>
+  <source src="./img/dapr.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+![bg right fit](./img/dapr.png)
 
 ---
 
@@ -159,8 +167,20 @@ Virtual Machines (VMs)
 
 ![bg right 60%](./img/oci-logo.png)
 
-- A project under the Linux Foundation aiming to create open standards for container formats and runtime. 
+- A project under the Linux Foundation. 
 - It promotes interoperability and compatibility across different tools and platforms.
+- OCI has three main specifications:
+  - Runtime Specification
+  - Image Specification
+  - Distribution Specification
+
+---
+
+# How its all Connected
+
+<br/>
+
+![w:1080](./img/relationship.drawio.png)
 
 ---
 
@@ -178,28 +198,6 @@ Container images bundle application code with the necessary runtime, libraries, 
 - **Efficiency Through Layering**: Image layers maximize reusability and minimize storage requirements by sharing common layers between images.
 
 ![w:1080px](./img/container-layers.drawio.png)
-
----
-
-# Image Tags: Stable vs Unique
-
-- Use semantic versioning or specific build identifiers.
-- Maintain clear and consistent tagging conventions for easy tracking.
-
-> | Stable Tags | Unique Tags    |
-> |-------------|----------------|
-> | latest      | sha256:1234567890 |
-> | stable      | build-1234     |
-> | v1.0        | 2022-01-01     |
-> | production  | 1.0.2         |
-
----
-
-# How its all Connected
-
-<br/>
-
-![w:1080](./img/relationship.drawio.png)
 
 ---
 
@@ -223,6 +221,20 @@ Central hubs for storing, managing, and distributing container images, featuring
 
 </div>
 </div>
+
+---
+
+# Image Tags: Stable vs Unique
+
+- Use semantic versioning or specific build identifiers.
+- Maintain clear and consistent tagging conventions for easy tracking.
+
+> | Stable Tags | Unique Tags    |
+> |-------------|----------------|
+> | latest      | sha256:1234567890 |
+> | stable      | build-1234     |
+> | v1.0        | 2022-01-01     |
+> | production  | 1.0.2         |
 
 ---
 
@@ -380,7 +392,7 @@ Externalize app settings for easy updates without image rebuilds.
 catalog-api:
     image: eshop/catalog-api
     environment:
-      - ConnectionString=Server=sqldata;Initial Catalog=CatalogData;User Id=sa;Password=[PLACEHOLDER]
+      - Endpoint=XXXXXX
     expose:
       - "80"
     ports:
@@ -543,3 +555,9 @@ The **Restricted** policy enhances security for critical applications by enforci
 
 </div>
 </div>
+
+---
+
+# Session Feedback
+
+![bg fit right](img/session-feedback.png)
