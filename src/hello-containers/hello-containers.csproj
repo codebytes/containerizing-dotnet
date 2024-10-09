@@ -6,14 +6,17 @@
     <RootNamespace>hello_containers</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!-- <ContainerFamily>jammy-chiseled</ContainerFamily>
-    <PublishTrimmed>true</PublishTrimmed>
-    <PublishAot>true</PublishAot> -->
     <UserSecretsId>b38fb62b-c5c6-4765-8dfb-5cfc18e9a6ad</UserSecretsId>
   </PropertyGroup>
+  <PropertyGroup>
+  <IsPublishable>true</IsPublishable>
+  <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.204" />
-  </ItemGroup>
+  <!-- <ContainerRegistry>cacontainersdemo.azurecr.io</ContainerRegistry> -->
+  <!-- <ContainerRepository>dotnet-worker-image</ContainerRepository> -->
+  <!-- <ContainerFamily>alpine</ContainerFamily> -->
+  <!-- <ContainerImageTag>latest</ContainerImageTag> -->
+  
+</PropertyGroup>
 
 </Project>

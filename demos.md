@@ -1,8 +1,8 @@
 
-ACR_NAME=cayerscontainersdemo.azurecr.io
+ACR_NAME=cacontainersdemo.azurecr.io
 az group create --name rg-containers-demos --location eastus
-az acr create --name cayerscontainersdemo -g rg-containers-demos -l eastus --sku Standard
-az acr login -n cayerscontainersdemo
+az acr create --name cacontainersdemo -g rg-containers-demos -l eastus --sku Standard
+az acr login -n cacontainersdemo
 
 ---
 
@@ -41,7 +41,7 @@ docker run -it --rm --entrypoint /bin/bash --user root hello-containers:latest
 
 ---
 
-wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb
+wget https://github.com/aquasecurity/trivy/releases/download/v056.1/trivy_0.56.1_Linux-ARM64.deb
 sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
 
 trivy i hello-containers
@@ -51,9 +51,10 @@ trivy i hello-containers:chiseled
 dotnet publish -t:PublishContainer -p ContainerImageTag=arm64 --arch arm64
 docker run sampleapi:arm64
 
+ACR_NAME=cacontainersdemo.azurecr.io
 az acr build --registry $ACR_NAME --image test:v1 --file Dockerfile .
 
-docker login cayerscontainersdemo.azurecr.io
+docker login cacontainersdemo.azurecr.io
 
 az acr login -n $ACR_NAME
 docker run -p 8080:8080 $ACR_NAME/test:v1
