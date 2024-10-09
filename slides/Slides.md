@@ -395,10 +395,25 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 ---
 
 ## Environment Variables
+
 Externalize app settings for easy updates without image rebuilds.
+
+<div class="columns">
+<div>
+
 - Define variables in deployment manifests or service configurations.
 - Simplify configuration management.
 - Enhance application portability across environments.
+
+</div>
+<div>
+
+- ASPNETCORE_URLS
+- ASPNETCORE_HTTP_PORTS
+- ASPNETCORE_HTTPS_PORTS
+
+</div>
+</div>
 
 ---
 
