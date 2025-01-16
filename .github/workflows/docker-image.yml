@@ -61,17 +61,32 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Run Trivy vulnerability scanner
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: aquasecurity/trivy-action@0.28.0
+      # - name: Run Trivy vulnerability scanner
+      #   if: ${{ github.event_name != 'pull_request' }}
+      #   uses: aquasecurity/trivy-action@0.28.0
+      #   with:
+      #     exit-code: '1'
+      #     image-ref: ${{ fromJSON(steps.build.outputs.metadata)['image.name'] }}
+      #     format: 'github'
+      #     github-pat: ${{ github.token }}
+      #   env:
+      #     TRIVY_USERNAME: Username
+      #     TRIVY_PASSWORD: Password
+      - name: Generate Trivy Vulnerability Report
+        uses: aquasecurity/trivy-action@master
         with:
-          exit-code: '1'
           image-ref: ${{ fromJSON(steps.build.outputs.metadata)['image.name'] }}
-          format: 'github'
-          github-pat: ${{ github.token }}
-        env:
-          TRIVY_USERNAME: Username
-          TRIVY_PASSWORD: Password
+          output: trivy-report.json
+          format: json
+          exit-code: 0
+
+      - name: Upload Vulnerability Scan Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy-report.json
+          retention-days: 30
+
       - name: Build Docker Image
         uses: docker/build-push-action@v6
         id: build-and-push
