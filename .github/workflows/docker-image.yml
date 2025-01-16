@@ -61,10 +61,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-  
       - name: Run Trivy vulnerability scanner
         if: ${{ github.event_name != 'pull_request' }}
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: ${{ fromJSON(steps.build.outputs.metadata)['image.name'] }}
           format: 'github'
@@ -72,7 +71,6 @@ jobs:
         env:
           TRIVY_USERNAME: Username
           TRIVY_PASSWORD: Password
-
       - name: Build Docker Image
         uses: docker/build-push-action@v5
         id: build-and-push
