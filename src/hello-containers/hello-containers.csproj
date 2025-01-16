@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>hello_containers</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -11,7 +11,7 @@
   <PropertyGroup>
   <IsPublishable>true</IsPublishable>
   <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-
+ <PublishAot>true</PublishAot>
   <!-- <ContainerRegistry>cacontainersdemo.azurecr.io</ContainerRegistry> -->
   <!-- <ContainerRepository>dotnet-worker-image</ContainerRepository> -->
   <!-- <ContainerFamily>alpine</ContainerFamily> -->

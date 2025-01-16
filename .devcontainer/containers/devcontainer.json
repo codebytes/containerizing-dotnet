@@ -12,7 +12,10 @@
 			"moby": "true"
 		},
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "latest",
+			"additionalVersions": "lts"
+		},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/azure/azure-dev/azd:0": {},
 		"ghcr.io/dhoeric/features/trivy:1": {}

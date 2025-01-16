@@ -20,15 +20,16 @@ docker run -it --rm --entrypoint /bin/bash sampleapi:latest
 
 dotnet publish -t:PublishContainer -p ContainerImageTag=published
 dotnet publish -t:PublishContainer -p ContainerImageTag=alpine -p ContainerFamily=alpine 
-dotnet publish -t:PublishContainer -p ContainerImageTag=chiseled -p ContainerFamily=jammy-chiseled
+dotnet publish -t:PublishContainer -p ContainerImageTag=chiseled -p ContainerFamily=noble-chiseled
+dotnet publish -t:PublishContainer -p ContainerImageTag=aot -p ContainerFamily=noble-chiseled-extra
 
 --- packages
 
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:8.0 | grep dotnet | wc -l
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:8.0 | grep deb | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0 | grep dotnet | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0 | grep deb | wc -l
 
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:8.0-jammy-chiseled | grep dotnet | wc -l
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:8.0-jammy-chiseled | grep deb | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0-noble-chiseled | grep dotnet | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0-noble-chiseled | grep deb | wc -l
 
 --- security
 
@@ -41,8 +42,8 @@ docker run -it --rm --entrypoint /bin/bash --user root hello-containers:latest
 
 ---
 
-wget https://github.com/aquasecurity/trivy/releases/download/v056.1/trivy_0.56.1_Linux-ARM64.deb
-sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+wget https://github.com/aquasecurity/trivy/releases/download/v0.58.2/trivy_0.58.2_Linux-ARM64.deb
+sudo dpkg -i trivy_0.58.2_Linux-ARM64.deb
 
 trivy i hello-containers
 trivy i hello-containers:alpine
