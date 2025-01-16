@@ -51,7 +51,7 @@ jobs:
           images: ${{ vars.DOCKER_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}
 
       - name: Build Docker Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         id: build
         with:
           context: src/SampleApi
@@ -72,7 +72,7 @@ jobs:
           TRIVY_USERNAME: Username
           TRIVY_PASSWORD: Password
       - name: Build Docker Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         id: build-and-push
         with:
           context: src/SampleApi
