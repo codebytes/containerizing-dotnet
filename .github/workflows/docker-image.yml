@@ -65,6 +65,7 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         uses: aquasecurity/trivy-action@0.28.0
         with:
+          exit-code: '1'
           image-ref: ${{ fromJSON(steps.build.outputs.metadata)['image.name'] }}
           format: 'github'
           github-pat: ${{ github.token }}
