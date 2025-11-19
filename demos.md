@@ -25,11 +25,11 @@ dotnet publish -t:PublishContainer -p ContainerImageTag=aot -p ContainerFamily=n
 
 --- packages
 
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0 | grep dotnet | wc -l
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0 | grep deb | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:10.0 | grep dotnet | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:10.0 | grep deb | wc -l
 
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0-noble-chiseled | grep dotnet | wc -l
-docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:9.0-noble-chiseled | grep deb | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:10.0-noble-chiseled | grep dotnet | wc -l
+docker run --rm anchore/syft mcr.microsoft.com/dotnet/runtime:10.0-noble-chiseled | grep deb | wc -l
 
 --- security
 

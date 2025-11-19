@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/hello-containers/hello-containers.csproj" />
+    <Project Path="src/SampleApi/SampleApi.csproj" />
+  </Folder>
+</Solution>
