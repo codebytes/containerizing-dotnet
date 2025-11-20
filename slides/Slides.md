@@ -25,29 +25,213 @@ footer: 'https://chris-ayers.com'
 <i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
 ~~<i class="fa-brands fa-twitter"></i> Twitter: @Chris_L_Ayers~~
 
----
-
-# Agenda
-
-1. **Software and Architecture**
-2. **Containerization Basics**
-3. **.NET and Containers**
-4. **Configuration**
-5. **Security**
-6. **Demos**
-7. **Questions**
 
 ---
 
-# Software and Architecture
+# Containerization
+
+---
+
+# Containers vs. Virtual Machines (VMs)
+
+<div class="columns">
+
+<div>
+
+Virtual Machines (VMs)
+
+![width:450px](./img/vm.png) 
+- Larger images (GBs)          
+- Slow (OS needs full init)    
+- Superior isolation           
+- Higher resource use          
+
+
+</div>
+
+<div>
+
+Container                            
+![width:450px](./img/container.png)  
+- Lightweight images (MBs)             
+- Fast (seconds to start)              
+- Shared OS can pose security concerns 
+- Efficient resource utilization       
+
+</div>
+
+
+</div>
+
+---
+
+# Open Container Initiative (OCI)
+
+
+Linux Foundation project that defines neutral specs everyone can implement.
+- Three specs keep the ecosystem interoperable:
+  - **Runtime**: How a container is executed on a host.
+  - **Image**: How layers/metadata are packaged.
+  - **Distribution**: How registries push/pull content.
+
+![bg right:30% fit](./img/oci-logo.png)
+
+---
+
+# Container Runtimes
+
+<div class="columns23">
+<div>
+
+Runtimes pull images, create containers, and enforce isolation:
+
+- **High-level (Docker, Podman)** provide CLI UX, build, and orchestration glue.
+- **Low-level (containerd, CRI-O, runc)** focus on OCI runtime compliance and performance.
+- Feed higher-level orchestrators (AKS, Kubernetes, ACA) which handle scheduling, scaling, and networking.
+
+</div>
+<div class="center">
+
+<br/>
+<br/>
+
+![w:200px](./img/containerd-logo.png)
+![w:300px](./img/crio-logo.png)
+![w:200px](./img/podman-logo.png)
+![w:300px](./img/runc-logo.png)
+
+</div>
+</div>
+
+---
+
+# Container Images
+
+<div class="columns">
+
+<div>
+
+Container images implement the OCI image spec and bundle app code + runtime:
+- **Immutable layers** guarantee consistent deployments.
+- **Layer reuse** minimizes storage and accelerates pulls.
+- **Metadata** (labels, env vars, exposed ports) guides orchestrators.
+- These artifacts are what we tag and push to registries.
+
+</div>
+<div>
+
+![fit](./img/container-image.png)
+
+</div>
+</div>
+
+---
+
+# Exploring Image Layers
+
+- Layered filesystems only download what changed between builds.
+- Smaller diffs → faster CI/CD, cheaper registry storage, quicker rollbacks.
+- Registries deduplicate shared layers, and runtimes cache them locally for instant startup.
+
+![w:900px center](./img/container-layers.drawio.png)
+
+---
+
+
+# Image Tags: Stable vs Unique
+
+<div class="columns">
+<div>
+
+## Stable Tags
+
+- Treat as moving targets for CI builds or dev stacks.
+- Avoid promoting to prod because they silently shift.
+- Examples: `latest`, `stable`, `v1.0`, `production`.
+- Live in registries and are referenced by orchestrator manifests—drift here cascades through environments.
+
+</div>
+<div>
+
+## Unique Tags
+
+- Immutable references for a single build or artifact.
+- Ideal for releases, rollbacks, and audit trails.
+- Examples: digest (`sha256:123…`), `build-1234`, `2022-01-01`, semantic `1.0.2`.
+- Pair unique tags/digests with deployment manifests to guarantee the runtime pulls the exact image you tested.
+
+</div>
+</div>
+
+---
+
+# Container Registries
+
+<div class="columns23">
+<div>
+
+Central hubs for storing and serving OCI images:
+- Versioned repositories with RBAC/geo-replication.
+- Built-in vulnerability scans, content trust, and SBOM retention.
+- Hooks for CI/CD pipelines, policies, and retention rules.
+- Provide the endpoints that runtimes/orchestrators pull from in the next slides.
+
+</div>
+<div class="center">
+
+<br/>
+
+![w:150px](./img/acr-logo.png)![w:150px](./img/github-packages-logo.png)
+![w:150px](./img/docker-hub-logo.png)![w:150px](./img/harbor-logo.png)
+
+</div>
+</div>
+
+
+---
+
+# How It All Connects
+
+![w:1080](./img/relationship.drawio.png)
+
+---
+
+# Orchestrators & Platforms
+
+<div class="columns23">
+<div>
+
+- Schedule containers onto nodes by talking to the local runtime.
+- Handle rollouts/rollbacks, self-healing, service discovery, ingress, and secret/config mounts.
+- Enforce policy (Pod Security, admission controllers, OPA/Gatekeeper) and emit health signals.
+- Integrate with CI/CD + GitOps tooling (`kubectl`, `helm`, `azd`, Flux, Argo CD).
+
+</div>
+<div>
+
+![](./img/kubernetes.svg)
+
+</div>
+</div>
+
+---
+
+
+![bg fit](img/one-does-not.png)
+
+---
+
+# Software and Architecture Considerations
 
 ---
 
 # Microservices
+
 - Architectural style that structures an application as a collection of loosely coupled services. 
 - Improved modularity
 - Applications are easier to develop, test, deploy, and scale.
 - Each service can be deployed independently, enabling faster iterations.
+
 
 ---
 
@@ -93,16 +277,14 @@ footer: 'https://chris-ayers.com'
 ---
 
 # .NET Version Support
-![.NET Version Support](img/dotnet-versions.png)
+![.NET Version Support](img/release-schedule.svg)
+
+
 
 ---
 
-# .NET Version Support - Zoomed
-![center w:900px](img/dotnet-versions-zoom.png)
+# Azure Migrate Application and Code Assessment
 
----
-
-# Azure Migrate application and code assessment for .NET
 ## AppCat
 
 - Available as a VS extension or cli tool
@@ -123,159 +305,6 @@ Dapr provides integrated APIs for communication, state, and workflow.
 </video>
 
 ![bg right fit](./img/dapr.png)
-
----
-
-# Containerization
-
----
-
-# Containers vs. Virtual Machines (VMs)
-
-<div class="columns">
-<div>
-
-Container                            
-![width:400px](./img/container.png)  
-- Lightweight images (MBs)             
-- Fast (seconds to start)              
-- Shared OS can pose security concerns 
-- Efficient resource utilization       
-
-</div>
-
-<div>
-
-Virtual Machines (VMs)
-
-![width:400px](./img/vm.png) 
-- Larger images (GBs)          
-- Slow (OS needs full init)    
-- Superior isolation           
-- Higher resource use          
-
-
-</div>
-
-</div>
-
----
-
-# Let's define a few Container Terms
-
----
-
-# Open Container Initiative (OCI)
-
-![bg right 60%](./img/oci-logo.png)
-
-- A project under the Linux Foundation. 
-- It promotes interoperability and compatibility across different tools and platforms.
-- OCI has three main specifications:
-  - Runtime Specification
-  - Image Specification
-  - Distribution Specification
-
----
-
-# How its all Connected
-
-<br/>
-
-![w:1080](./img/relationship.drawio.png)
-
----
-
-# Container Images
-
-![bg right:40% w:550px](./img/container-image.png)
-
-Container images bundle application code with the necessary runtime, libraries, and configurations. They utilize a **Layered File System** for efficient storage and distribution:
-- **Immutable Layers**: Each layer is fixed once created, ensuring consistency.
-- **Reusability**: Shared layers across images reduce storage and speed up deployments.
-  
----
-
-# Exploring Image Layers
-- **Efficiency Through Layering**: Image layers maximize reusability and minimize storage requirements by sharing common layers between images.
-
-![w:1080px](./img/container-layers.drawio.png)
-
----
-
-# Container Registries
-
-<div class="columns">
-<div>
-
-Central hubs for storing, managing, and distributing container images, featuring:
-- Version and access control for secure collaboration.
-- Security scanning to detect vulnerabilities.
-- CI/CD integration for automated deployment workflows.
-
-</div>
-<div class="center">
-
-<br/>
-
-![w:150px](./img/acr-logo.png)![w:150px](./img/github-packages-logo.png)
-![w:150px](./img/docker-hub-logo.png)![w:150px](./img/harbor-logo.png)
-
-</div>
-</div>
-
----
-
-# Container Runtimes
-
-<div class="columns">
-<div>
-
-Container runtimes are the engines that run containers and manage their lifecycles, with different levels of abstraction:
-- High-Level Runtimes: Offer ease of use and extended features for developers.
-- Low-Level Runtimes: Focus on performance and fundamental container operations.
-
-</div>
-<div class="center">
-
-<br/>
-<br/>
-<br/>
-
-![w:200px](./img/containerd-logo.png)![w:300px](./img/crio-logo.png)![w:200px](./img/podman-logo.png)![w:300px](./img/runc-logo.png)
-
-</div>
-</div>
-
----
-
-# Image Tags: Stable vs Unique
-
-<div class="columns">
-<div>
-
-## Stable Tags
-
-Stable tags help maintain base images for container builds. Avoid using them for deployments since they receive updates that might cause inconsistencies in production. Examples include:
-
-- latest
-- stable
-- v1.0
-- production
-
-</div>
-<div>
-
-## Unique Tags
-
-Unique tags track specific builds or versions of an image. They often include build numbers, commit hashes, or timestamps. These are great for CI/CD pipelines and testing environments. Examples include:
-- sha256:1234567890
-- build-1234
-- 2022-01-01
-- 1.0.2
-
-</div>
-</div>
 
 ---
 
@@ -392,7 +421,7 @@ ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
 
 #  .NET Configuration
 
-![w:950px](./img/configuration-providers.png)
+![w:900px center](./img/configuration-providers.png)
 
 ---
 
@@ -472,6 +501,9 @@ spec:
 ---
 
 ## CSI Secret Store & .NET Integration
+
+[Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/)
+
 - Securely store and manage secrets for .NET applications in Kubernetes.
 - **Features**:
   - Automates secret injection into .NET containers at runtime.

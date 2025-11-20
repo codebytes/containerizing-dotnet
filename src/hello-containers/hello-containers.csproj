@@ -11,7 +11,7 @@
   <PropertyGroup>
   <IsPublishable>true</IsPublishable>
   <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
- <PublishAot>true</PublishAot>
+  <!-- <PublishAot>true</PublishAot> -->
   <!-- <ContainerRegistry>cacontainersdemo.azurecr.io</ContainerRegistry> -->
   <!-- <ContainerRepository>dotnet-worker-image</ContainerRepository> -->
   <!-- <ContainerFamily>alpine</ContainerFamily> -->

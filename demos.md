@@ -55,6 +55,10 @@ docker run sampleapi:arm64
 ACR_NAME=cacontainersdemo.azurecr.io
 az acr build --registry $ACR_NAME --image test:v1 --file Dockerfile .
 
+$env:ACR_NAME = "cacontainersdemo.azurecr.io"          
+az acr build --registry $env:ACR_NAME --image test:v1 --file Dockerfile .
+
+
 docker login cacontainersdemo.azurecr.io
 
 az acr login -n $ACR_NAME
