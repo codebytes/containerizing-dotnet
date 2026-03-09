@@ -51,7 +51,7 @@ jobs:
           images: ${{ vars.DOCKER_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}
 
       - name: Build Docker Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         id: build
         with:
           context: src/SampleApi
@@ -90,7 +90,7 @@ jobs:
           retention-days: 30
 
       - name: Build Docker Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         id: build-and-push
         with:
           context: src/SampleApi
