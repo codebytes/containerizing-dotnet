@@ -1,3 +1,18 @@
+# Topics and demo commands
+
+This repository provides insights, best practices, and demonstrations for containerizing .NET applications. Topics covered include:
+
+- An introduction to containerizing .NET applications.
+- Features and benefits of using the .NET SDK's OCI Image Publish feature.
+- Step-by-step guide to containerize a .NET console application.
+- Advanced scenarios like targeting specific base images and Native AOT publishing.
+- Publishing .NET applications to Docker Hub and GitHub Container Registry.
+- Publishing .NET applications to Azure Container Registry.
+- Passing configuration and secrets to .NET applications running in containers.
+
+[Back to the talk](README.md)
+
+## Demo commands
 
 ACR_NAME=cacontainersdemo.azurecr.io
 az group create --name rg-containers-demos --location eastus
@@ -63,4 +78,3 @@ docker login cacontainersdemo.azurecr.io
 
 az acr login -n $ACR_NAME
 docker run -p 8080:8080 $ACR_NAME/test:v1
-
