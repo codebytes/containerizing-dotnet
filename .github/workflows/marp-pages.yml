@@ -6,11 +6,6 @@ on:
     branches: ["main"]
     paths:
       - 'slides/**'
-  pull_request:
-    branches: ["main"]
-    paths:
-      - 'slides/**'
-    
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,10 +31,16 @@ jobs:
       - name: Copy images
         run: mkdir build && cp -R slides/img build/img && cp -R slides/themes build/themes
 
-      - name: Marp Build (README)
-        uses: docker://marpteam/marp-cli:latest
+      - name: Marp Build (HTML)
+        uses: docker://marpteam/marp-cli:v4.5.0
         with:
           args: --theme-set slides/themes -o build/index.html --html -- slides/Slides.md
+        env:
+          MARP_USER: root:root
+      - name: Marp Build (PDF)
+        uses: docker://marpteam/marp-cli:v4.5.0
+        with:
+          args: --theme-set slides/themes -o build/Slides.pdf --html --pdf --allow-local-files -- slides/Slides.md
         env:
           MARP_USER: root:root
       - name: Setup Pages
