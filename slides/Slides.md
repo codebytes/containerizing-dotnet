@@ -16,7 +16,7 @@ footer: 'https://chris-ayers.com'
 
 ## Chris Ayers
 
-### Principal Software Engineer<br>Azure CXP AzRel<br>Microsoft
+### Principal Software Engineer<br>Azure EngOps AzRel<br>Microsoft
 
 <i class="fa-brands fa-bluesky"></i> BlueSky: [@chris-ayers.com](https://bsky.app/profile/chris-ayers.com)
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
@@ -40,7 +40,7 @@ footer: 'https://chris-ayers.com'
 
 Virtual Machines (VMs)
 
-![width:450px](./img/vm.png) 
+![width:400px](./img/vm.png)
 - Larger images (GBs)          
 - Slow (OS needs full init)    
 - Superior isolation           
@@ -52,7 +52,7 @@ Virtual Machines (VMs)
 <div>
 
 Container                            
-![width:450px](./img/container.png)  
+![width:400px](./img/container.png)
 - Lightweight images (MBs)             
 - Fast (seconds to start)              
 - Shared OS can pose security concerns 
@@ -107,11 +107,12 @@ Runtimes pull images, create containers, and enforce isolation:
 
 # Container Images
 
+Container images implement the OCI image spec and bundle app code + runtime:
+
 <div class="columns">
 
 <div>
 
-Container images implement the OCI image spec and bundle app code + runtime:
 - **Immutable layers** guarantee consistent deployments.
 - **Layer reuse** minimizes storage and accelerates pulls.
 - **Metadata** (labels, env vars, exposed ports) guides orchestrators.
@@ -140,9 +141,6 @@ Container images implement the OCI image spec and bundle app code + runtime:
 
 # Image Tags: Stable vs Unique
 
-<div class="columns">
-<div>
-
 ## Stable Tags
 
 - Treat as moving targets for CI builds or dev stacks.
@@ -150,8 +148,9 @@ Container images implement the OCI image spec and bundle app code + runtime:
 - Examples: `latest`, `stable`, `v1.0`, `production`.
 - Live in registries and are referenced by orchestrator manifests—drift here cascades through environments.
 
-</div>
-<div>
+---
+
+# Image Tags: Stable vs Unique
 
 ## Unique Tags
 
@@ -159,9 +158,6 @@ Container images implement the OCI image spec and bundle app code + runtime:
 - Ideal for releases, rollbacks, and audit trails.
 - Examples: digest (`sha256:123…`), `build-1234`, `2022-01-01`, semantic `1.0.2`.
 - Pair unique tags/digests with deployment manifests to guarantee the runtime pulls the exact image you tested.
-
-</div>
-</div>
 
 ---
 
@@ -217,7 +213,7 @@ Central hubs for storing and serving OCI images:
 ---
 
 
-![bg fit](img/one-does-not.png)
+![bg 80%](img/one-does-not.png)
 
 ---
 
