@@ -6,6 +6,10 @@ This repository contains resources and examples demonstrating containerizing .NE
 
 [View HTML slides](https://chris-ayers.com/containerizing-dotnet/) | [Download PDF](https://chris-ayers.com/containerizing-dotnet/Slides.pdf)
 
+## Recordings
+
+- [NDC Sydney 2024 — .NET in a Box](https://www.youtube.com/watch?v=AjKsCPH4PQw)
+
 ## Resources
 
 - [Slide source](slides/Slides.md)
