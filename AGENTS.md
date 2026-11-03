@@ -36,11 +36,11 @@ This repository holds the slides and demos for Chris Ayers' talk **.NET in a Box
 
 Use the shared skills from [codebytes/skills](https://github.com/codebytes/skills) (for Copilot CLI: `copilot plugin install https://github.com/codebytes/skills`). Don't copy their instructions or scripts into this repo.
 
-| Task | Skill |
-| --- | --- |
-| Write or revise slides, notes, order, or layouts | `marp-authoring` |
-| Charts, Mermaid diagrams, or other visuals | `marp-visuals` |
-| Editable `.drawio.svg` diagrams (stored in `slides/img/`) | `drawio-diagrams` |
+| Task                                                                          | Skill               |
+| ----------------------------------------------------------------------------- | ------------------- |
+| Write or revise slides, notes, order, or layouts                              | `marp-authoring`    |
+| Charts, Mermaid diagrams, or other visuals                                    | `marp-visuals`      |
+| Editable `.drawio.svg` diagrams (stored in `slides/img/`)                     | `drawio-diagrams`   |
 | Check overflow, clipping, and HTML/PDF parity before presenting or publishing | `marp-slide-review` |
 
 ## Build and run
@@ -56,9 +56,9 @@ docker build -t sampleapi src/SampleApi                 # image via the Dockerfi
 - `demos.md` is the source of truth for demo commands; update it when a demo changes.
 - The image workflows sign images with cosign and push to a registry; keep registry credentials in repository secrets.
 
-## README
+## Readme
 
-- Keep the README sections in this order: Slides, Recordings, Resources, Contact.
+- Keep the readme sections in this order: Slides, Recordings, Resources, Contact.
 - When a new recording of the talk is published, add it at the top of `## Recordings` as `- [Event Year](https://www.youtube.com/watch?v=VIDEO_ID)`. When the video's title differs from the talk's, add an em dash and the recorded title after the event. Keep the list newest first.
 - The talk also appears on <https://chris-ayers.com/speaking/> (source: `content/speaking.md` in [codebytes/codebytes.github.io](https://github.com/codebytes/codebytes.github.io)); new events and recordings belong there too.
 
